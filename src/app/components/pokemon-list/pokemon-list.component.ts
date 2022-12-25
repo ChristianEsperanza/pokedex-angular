@@ -8,23 +8,34 @@ import { PokeapiService } from 'src/app/services/pokeapi.service';
 })
 
 export class PokemonListComponent implements OnInit {
-  private _pokemons: any[] = [];
+  pokemons: any[] = [];
+  page = 1;
+  totalPokemons: number = 0;
 
   constructor(
     private pokeapiService: PokeapiService
   ) { }
 
   ngOnInit(): void {
-    this.pokeapiService.getPokemon()
+    this.loadPokemon();
+  }
+
+  loadPokemon(lastId: number = 0){
+    this.pokeapiService.getPokemon(lastId)
       .subscribe((response: any) => {
-        response.results.forEach((result: any) => {
-          this.pokeapiService.getPokemonData(result.name)
+        this.totalPokemons = response.count;
+        response.results.forEach((pkmn: any) => {
+          this.pokeapiService.getPokemonData(pkmn.name)
             .subscribe((pokemonDataResponse: any) => {
-              this._pokemons.push(pokemonDataResponse);
-              console.log(this._pokemons);
+              this.pokemons.push(pokemonDataResponse)
             })
         });
       })
+      console.log(this.pokemons)
+  }
+
+  sort_pokedex(): void {
+    this.pokemons = this.pokemons.sort((a, b) => (a.id > b.id) ? 1: -1)
   }
 
 }

@@ -8,7 +8,13 @@
         <img [src]="pokemon.sprites.front_shiny" alt="Shiny Pokemon">
         <h1>{{ pokemon.name | titlecase }}</h1>
         <div>
-            <b>Type: </b><span *ngFor="let type of pokemon.types">{{ type.type.name | titlecase}} </span>
+            <b>Type: </b>
+            <span 
+            *ngFor="let type of pokemon.types"
+            class="badge border rounded-pill text-bg-dark"
+            >
+            {{ type.type.name | titlecase}} 
+            </span>
         </div>
     </div>
     <button class="btn btn-primary" id="loadMore" (click)="loadPokemon((pokemons.length -1))">Load More</button>

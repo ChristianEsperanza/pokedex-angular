@@ -3,28 +3,50 @@ import { HttpClient } from '@angular/common/http';
 import { environment } from 'src/environments/environment';
 import { Observable } from 'rxjs';
 
+/**
+ * Service that deals with talking to the PokeAPI and dealing with logic within 
+ */
 @Injectable({
   providedIn: 'root'
 })
+
 export class PokeapiService {
   private apiUrl = environment.apiUrl + 'pokemon';
+  private _pokemons: any[] = []; // Holds the pokemon fetched from API to reduce calls
+  private _next: string = '';
 
-  constructor(
-    private http: HttpClient
-  ) { }
+  constructor(private http: HttpClient) { }
 
-  getPokemon(offset:number = 0) {
-    return this.http.get(this.apiUrl + `?limit=20&offset=${offset}`);
+  get pokemons(): any[] {
+    return this._pokemons;
   }
 
-  getPokemonData(name: string) {
-    return this.http.get<any>(this.apiUrl + `/${name}`)
+  get next(): string {
+    return this._next;
   }
 
-  // getPokemonDataObserveable(): Observable<any> {
-  //   const url = this.next === '' ? `${this.apiUrl}?limit=100` : this.next;
-  //   return this.http.get<any>(url);
-  // }
+  set next(next: string) {
+    this._next = next;
+  }
+
+  // Make base API call, starting from the base if there has been no previous API calls
+  getNext(): Observable<any> {
+    const url = this._next === '' ? this.apiUrl + `?limit=20` : this._next;
+    return this.http.get(url);
+  }
+
+  // Similar to getPokemonData but returns an observable 
+  getDetails(name: string): Observable<any> {
+    return this.http.get(this.apiUrl + `/${name}`);
+  }
+
+
+
+
+
+
+
+
 
 
 }

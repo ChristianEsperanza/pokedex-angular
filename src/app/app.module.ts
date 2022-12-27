@@ -8,12 +8,14 @@ import { AppComponent } from './app.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { HeaderComponent } from './components/header/header.component';
 import { PokemonListComponent } from './components/pokemon-list/pokemon-list.component';
+import { PokemonDetailsComponent } from './components/pokemon-details/pokemon-details.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     HeaderComponent,
-    PokemonListComponent
+    PokemonListComponent,
+    PokemonDetailsComponent
   ],
   imports: [
     BrowserModule,

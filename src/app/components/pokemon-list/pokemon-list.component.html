@@ -5,7 +5,6 @@
     *ngFor="let pokemon of pokemons | paginate: { itemsPerPage: 20, currentPage: page, totalItems: totalPokemons } "
     >
         <img [src]="pokemon.sprites.front_default" alt="Normal Pokemon">
-        <img [src]="pokemon.sprites.front_shiny" alt="Shiny Pokemon">
         <h1>{{ pokemon.name | titlecase }}</h1>
         <div>
             <b>Type: </b>
@@ -20,4 +19,50 @@
     <!-- <button class="btn btn-primary" id="loadMore" (click)="loadPokemon((pokemons.length -1))">Load More</button> -->
 </div>
 
-<pagination-controls (pageChange)="page = $event; "></pagination-controls>
+<!-- <pagination-controls (pageChange)="page = $event; "></pagination-controls> -->
+
+<!-- <div class="row">
+    <div class="col-md-5">
+        <div class="card mb-3" *ngFor="let pokemon of pokemons">
+            <div class="card-body">
+                <h5 class="card-title">#{{ pokemon.id }} {{ pokemon.name | titlecase}}</h5>
+                <img [src]="pokemon.sprites.front_default" class="sprite">
+
+                <p class="card-text">Type</p>
+            </div>
+        </div>
+    </div>
+
+
+
+    <div class="col-md-8">
+        <div class="card">
+            <div class="card-body">
+                Card Body
+            </div>
+        </div>
+    </div>
+</div>
+
+-->
+
+<!-- 5 columns: 4 for details/typing, 1 for sprite -->
+<div class="col-md-4 list-wrapper" *ngFor="let pokemon of pokemons">
+    <div class="card mb-3">
+        <div class="card-body">
+            <div class="row row-bg">
+                <div class="col-6 col-sm-7 main-bg">
+                    <h5 class="card-title">#{{ pokemon.id }} {{ pokemon.name | titlecase}}</h5>
+                    <span *ngFor="let type of pokemon.types" class="badge border rounded-pill text-bg-dark">
+                        {{ type.type.name | titlecase}} 
+                    </span>
+                </div>
+                <div class="col-5 col-sm-4 sprite-bg">
+                    <img [src]="pokemon.sprites.front_default" class="img-fluid">
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+</div>

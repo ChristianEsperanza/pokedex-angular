@@ -47,6 +47,7 @@ export class PokemonListComponent implements OnInit {
           this.pokeapiService.pokemons.push(response);
         });
       }, error => console.log("Error Occurred: ", error))
+      console.log(this.pokemons)
   }
 
   // loadPokemon(lastId: number = 0){

@@ -1,6 +1,6 @@
 <!-- Pokemon grid -->
 <div class="pokemon-grid">
-    <div 
+    <!-- <div 
     class="box" 
     *ngFor="let pokemon of pokemons | paginate: { itemsPerPage: 20, currentPage: page, totalItems: totalPokemons } "
     >
@@ -16,35 +16,10 @@
             </span>
         </div>
     </div>
-    <!-- <button class="btn btn-primary" id="loadMore" (click)="loadPokemon((pokemons.length -1))">Load More</button> -->
-</div>
+    <button class="btn btn-primary" id="loadMore" (click)="loadPokemon((pokemons.length -1))">Load More</button>
+</div> -->
 
 <!-- <pagination-controls (pageChange)="page = $event; "></pagination-controls> -->
-
-<!-- <div class="row">
-    <div class="col-md-5">
-        <div class="card mb-3" *ngFor="let pokemon of pokemons">
-            <div class="card-body">
-                <h5 class="card-title">#{{ pokemon.id }} {{ pokemon.name | titlecase}}</h5>
-                <img [src]="pokemon.sprites.front_default" class="sprite">
-
-                <p class="card-text">Type</p>
-            </div>
-        </div>
-    </div>
-
-
-
-    <div class="col-md-8">
-        <div class="card">
-            <div class="card-body">
-                Card Body
-            </div>
-        </div>
-    </div>
-</div>
-
--->
 
 <!-- 5 columns: 4 for details/typing, 1 for sprite -->
 <div class="col-md-4 list-wrapper" *ngFor="let pokemon of pokemons">

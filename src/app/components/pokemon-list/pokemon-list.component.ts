@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import { PokeapiService } from 'src/app/services/pokeapi.service';
 import { concat, Subscription } from 'rxjs';
 
@@ -8,7 +8,7 @@ import { concat, Subscription } from 'rxjs';
   styleUrls: ['./pokemon-list.component.scss']
 })
 
-export class PokemonListComponent implements OnInit {
+export class PokemonListComponent implements OnInit, OnDestroy {
   // pokemons: any[] = [];
   page = 1;
   totalPokemons: number = 0;
@@ -49,20 +49,5 @@ export class PokemonListComponent implements OnInit {
       }, error => console.log("Error Occurred: ", error))
       console.log(this.pokemons)
   }
-
-  // loadPokemon(lastId: number = 0){
-  //   this.pokeapiService.getPokemon(lastId)
-  //     .subscribe((response: any) => {
-  //       this.totalPokemons = response.count;
-  //       response.results.forEach((pkmn: any) => {
-  //         this.pokeapiService.getPokemonData(pkmn.name)
-  //           .subscribe((pokemonDataResponse: any) => {
-  //             this.pokemons.push(pokemonDataResponse)
-  //           })
-  //       });
-  //     })
-  //     console.log(this.pokemons)
-  // }
-
 
 }

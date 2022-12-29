@@ -21,8 +21,8 @@
 
 <!-- <pagination-controls (pageChange)="page = $event; "></pagination-controls> -->
 
-<!-- 5 columns: 4 for details/typing, 1 for sprite -->
-<div class="col-md-4 list-wrapper" *ngFor="let pokemon of pokemons">
+<div class="col-md-12 list-wrapper" *ngFor="let pokemon of pokemons">
+    <!-- <div class="card mb-3" [routerLink]="['/view', pokemon.name]"> -->
     <div class="card mb-3">
         <div class="card-body">
             <div class="row row-bg">
@@ -38,6 +38,4 @@
             </div>
         </div>
     </div>
-
-
 </div>

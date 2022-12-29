@@ -19,6 +19,11 @@ pagination-controls {
     padding: 20px;
 }
 
+:host {
+    display:inline-block;
+}
+
+
 // Used for test
 // TODO: DELETE
 .main-bg {
